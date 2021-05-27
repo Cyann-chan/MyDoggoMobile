@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/DoggoHome">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.mydoggomobile.presentation.list.DoggoListFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/DoggoHome"
+        android:name="com.example.mydoggomobile.DoggoHome"
+        android:label="Home"
+        tools:layout="@layout/fragment_home_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/navigateFromHomeToList"
+            app:destination="@id/DoggoList" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/DoggoList"
         android:name="com.example.mydoggomobile.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:label="List"
+        tools:layout="@layout/fragment_list_doggo">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/navigateFromListToHome"
+            app:destination="@id/DoggoHome" />
     </fragment>
 </navigation>
