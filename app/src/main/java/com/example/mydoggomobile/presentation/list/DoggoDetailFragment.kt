@@ -26,7 +26,7 @@ class DoggoDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.button_third).setOnClickListener {
-            findNavController().navigate(R.id.navigateFromHomeToList)
+            findNavController().navigate(R.id.returnToDoggoListFragment)
         }
     }
 }

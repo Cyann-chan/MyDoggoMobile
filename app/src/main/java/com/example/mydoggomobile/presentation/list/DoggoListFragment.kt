@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mydoggomobile.R
@@ -22,7 +23,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 class DoggoListFragment : Fragment() {
 
     private lateinit var recyclerView : RecyclerView
-    private val adapter = DoggoAdapter(listOf())
+    private val adapter = DoggoAdapter(listOf(), ::onClickedDoggo)
+
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -75,5 +78,14 @@ class DoggoListFragment : Fragment() {
 
 
     })
-}
+
+}    private fun onClickedDoggo(doggo: DoggoListResponse) {
+        val doggoName = doggo.name
+        val bundle = Bundle()
+        bundle.putString("doggoname",doggoName)
+
+        val fragment = Fragment()
+        fragment.setArguments(bundle)
+        findNavController().navigate(R.id.navigateToDoggoDetailFragment)
+    }
 }

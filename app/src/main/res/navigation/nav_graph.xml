@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home_first">
 
         <action
-            android:id="@+id/navigateFromHomeToList"
+            android:id="@+id/navigateToDoggoList"
             app:destination="@id/DoggoList" />
     </fragment>
 
