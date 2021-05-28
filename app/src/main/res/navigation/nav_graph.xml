@@ -15,14 +15,26 @@
             android:id="@+id/navigateFromHomeToList"
             app:destination="@id/DoggoList" />
     </fragment>
+
     <fragment
         android:id="@+id/DoggoList"
-        android:name="com.example.mydoggomobile.SecondFragment"
+        android:name="com.example.mydoggomobile.presentation.list.DoggoListFragment"
         android:label="List"
         tools:layout="@layout/fragment_list_doggo">
 
         <action
-            android:id="@+id/navigateFromListToHome"
-            app:destination="@id/DoggoHome" />
+            android:id="@+id/navigateToDoggoDetailFragment"
+            app:destination="@id/DoggoDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DoggoDetailFragment"
+        android:name="com.example.mydoggomobile.presentation.list.DoggoDetailFragment"
+        android:label="Third Fragment"
+        tools:layout="@layout/fragment_detail_doggo">
+
+        <action
+            android:id="@+id/returnToDoggoListFragment"
+            app:destination="@id/DoggoList" />
     </fragment>
 </navigation>

@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mydoggomobile.R
+import com.example.mydoggomobile.presentation.list.api.DoggoListResponse
 
-class DoggoAdapter(private val dataSet: Array<String>) :
-    RecyclerView.Adapter<DoggoAdapter.ViewHolder>() {
+class DoggoAdapter(private var dataSet: List<DoggoListResponse>) : RecyclerView.Adapter<DoggoAdapter.ViewHolder>() {
 
     /**
      * Provide a reference to the type of views that you are using
@@ -22,6 +22,14 @@ class DoggoAdapter(private val dataSet: Array<String>) :
             textView = view.findViewById(R.id.doggo_name)
         }
     }
+
+
+    fun updateList(list: List<DoggoListResponse>){
+        dataSet = list
+        notifyDataSetChanged()
+
+    }
+
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -37,7 +45,8 @@ class DoggoAdapter(private val dataSet: Array<String>) :
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.textView.text = dataSet[position]
+        val doggo : DoggoListResponse = dataSet[position]
+        viewHolder.textView.text = doggo.name
     }
 
     // Return the size of your dataset (invoked by the layout manager)
