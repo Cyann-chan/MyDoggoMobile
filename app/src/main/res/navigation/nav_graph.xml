@@ -30,7 +30,15 @@
                 app:argType="string"
                 android:defaultValue="null"/>
             <argument
+                android:name="DoggoLife"
+                app:argType="string"
+                android:defaultValue="null"/>
+            <argument
                 android:name="DoggoTemp"
+                app:argType="string"
+                android:defaultValue="null"/>
+            <argument
+                android:name="DoggoOrigin"
                 app:argType="string"
                 android:defaultValue="null"/>
             <argument

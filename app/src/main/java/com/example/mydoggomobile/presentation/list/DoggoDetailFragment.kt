@@ -41,6 +41,8 @@ class DoggoDetailFragment : Fragment() {
         var doggoName = arguments?.getString("DoggoArg")?: "Akita"
         var doggoTemp = arguments?.getString("DoggoTemp")?: "Nice"
         var doggoImg = arguments?.getString("url")?: "https://images.dog.ceo/breeds/affenpinscher/n02110627_2748.jpg"
+        var doggoLife = arguments?.getString("DoggoLife")?: "10 years"
+        var doggoOrigin = arguments?.getString("DoggoOrigin")?: "Origin unlisted"
 
         view.findViewById<Button>(R.id.button_third).setOnClickListener {
             findNavController().navigate(R.id.returnToDoggoListFragment)
@@ -49,8 +51,14 @@ class DoggoDetailFragment : Fragment() {
         textView = view.findViewById(R.id.doggo_detail)
         textView.text = doggoName
 
+        textView = view.findViewById(R.id.doggo_life_span)
+        textView.text = doggoLife
+
         textView = view.findViewById(R.id.doggo_temperament)
         textView.text = doggoTemp
+
+        textView = view.findViewById(R.id.doggo_origin)
+        textView.text = doggoOrigin
 
         image = view.findViewById(R.id.doggo_detail_image)
         Glide.with(this)

@@ -83,7 +83,9 @@ class DoggoListFragment : Fragment() {
         findNavController().navigate(R.id.navigateToDoggoDetailFragment, bundleOf(
                 "DoggoArg" to doggo.name,
                 "DoggoTemp" to doggo.temperament,
-                "url" to doggo.image.url
+                "url" to doggo.image.url,
+                "DoggoLife" to doggo.life_span,
+                "DoggoOrigin" to doggo.origin
         ))
     }
 }
