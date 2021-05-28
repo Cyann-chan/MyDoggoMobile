@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.os.bundleOf
@@ -16,14 +15,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mydoggomobile.R
-import com.example.mydoggomobile.presentation.list.api.DoggoApi
 import com.example.mydoggomobile.presentation.list.api.DoggoListResponse
-import com.example.mydoggomobile.presentation.list.api.Image
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.example.mydoggomobile.presentation.list.presentation.DoggoAdapter
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -32,7 +25,11 @@ class DoggoListFragment : Fragment() {
 
     private lateinit var recyclerView : RecyclerView
 
-    private val adapter = DoggoAdapter(listOf(), ::onClickedDoggo)
+    private val adapter =
+        DoggoAdapter(
+            listOf(),
+            ::onClickedDoggo
+        )
 
     private val viewModel: DoggoListViewModel by viewModels()
 

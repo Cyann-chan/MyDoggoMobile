@@ -1,4 +1,4 @@
-package com.example.mydoggomobile.presentation.list
+package com.example.mydoggomobile.presentation.list.presentation
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mydoggomobile.R
 import com.example.mydoggomobile.presentation.list.api.DoggoListResponse
-import com.example.mydoggomobile.presentation.list.api.Image
 
 class DoggoAdapter(private var dataSet: List<DoggoListResponse>, var listener: ((DoggoListResponse) -> Unit)? = null) : RecyclerView.Adapter<DoggoAdapter.ViewHolder>() {
 
@@ -42,7 +41,9 @@ class DoggoAdapter(private var dataSet: List<DoggoListResponse>, var listener: (
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.doggo_item, viewGroup, false)
 
-        return ViewHolder(view)
+        return ViewHolder(
+            view
+        )
     }
 
     // Replace the contents of a view (invoked by the layout manager)

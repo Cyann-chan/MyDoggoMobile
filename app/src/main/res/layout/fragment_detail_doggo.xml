@@ -31,11 +31,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Doggo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/doggo_life_span"
+        app:layout_constraintTop_toBottomOf="@id/doggo_detail_image"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        tools:ignore="MissingConstraints" />
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/doggo_life_span"
@@ -45,7 +47,10 @@
         app:layout_constraintTop_toBottomOf="@id/doggo_detail"
         app:layout_constraintBottom_toTopOf="@id/doggo_temperament"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/doggo_temperament"
@@ -55,7 +60,10 @@
         app:layout_constraintTop_toBottomOf="@id/doggo_detail"
         app:layout_constraintBottom_toTopOf="@id/button_third"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/doggo_origin"
@@ -65,7 +73,10 @@
         app:layout_constraintTop_toBottomOf="@id/doggo_temperament"
         app:layout_constraintBottom_toTopOf="@id/button_third"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/button_third"
