@@ -36,12 +36,16 @@ class DoggoDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var doggoName = arguments?.getString("DoggoArg")?: "Akita"
+        var doggoTemp = arguments?.getString("DoggoTemp")?: "Nice"
+
         view.findViewById<Button>(R.id.button_third).setOnClickListener {
             findNavController().navigate(R.id.returnToDoggoListFragment)
         }
 
         textView = view.findViewById(R.id.doggo_detail)
-
         textView.text = doggoName
+
+        textView = view.findViewById(R.id.doggo_temperament)
+        textView.text = doggoTemp
     }
 }

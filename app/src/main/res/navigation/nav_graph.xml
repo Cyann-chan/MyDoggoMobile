@@ -29,6 +29,10 @@
                 android:name="DoggoArg"
                 app:argType="string"
                 android:defaultValue="null"/>
+            <argument
+                android:name="DoggoTemp"
+                app:argType="string"
+                android:defaultValue="null"/>
         </action>
     </fragment>
 

@@ -80,7 +80,8 @@ class DoggoListFragment : Fragment() {
 
     private fun onClickedDoggo(doggo: DoggoListResponse) {
         findNavController().navigate(R.id.navigateToDoggoDetailFragment, bundleOf(
-                "DoggoArg" to doggo.name
+                "DoggoArg" to doggo.name,
+                "DoggoTemp" to doggo.temperament
         ))
     }
 }
