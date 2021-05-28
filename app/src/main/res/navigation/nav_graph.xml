@@ -33,6 +33,10 @@
                 android:name="DoggoTemp"
                 app:argType="string"
                 android:defaultValue="null"/>
+            <argument
+                android:name="url"
+                app:argType="string"
+                android:defaultValue="null"/>
         </action>
     </fragment>
 

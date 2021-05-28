@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.os.bundleOf
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mydoggomobile.R
 import com.example.mydoggomobile.presentation.list.api.DoggoApi
 import com.example.mydoggomobile.presentation.list.api.DoggoListResponse
+import com.example.mydoggomobile.presentation.list.api.Image
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,7 +38,6 @@ class DoggoListFragment : Fragment() {
 
     private lateinit var loader : ProgressBar
     private lateinit var texterror : TextView
-
 
 
     override fun onCreateView(
@@ -81,7 +82,8 @@ class DoggoListFragment : Fragment() {
     private fun onClickedDoggo(doggo: DoggoListResponse) {
         findNavController().navigate(R.id.navigateToDoggoDetailFragment, bundleOf(
                 "DoggoArg" to doggo.name,
-                "DoggoTemp" to doggo.temperament
+                "DoggoTemp" to doggo.temperament,
+                "url" to doggo.image.url
         ))
     }
 }

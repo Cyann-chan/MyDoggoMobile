@@ -3,10 +3,13 @@ package com.example.mydoggomobile.presentation.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.mydoggomobile.R
 import com.example.mydoggomobile.presentation.list.api.DoggoListResponse
+import com.example.mydoggomobile.presentation.list.api.Image
 
 class DoggoAdapter(private var dataSet: List<DoggoListResponse>, var listener: ((DoggoListResponse) -> Unit)? = null) : RecyclerView.Adapter<DoggoAdapter.ViewHolder>() {
 
@@ -16,13 +19,12 @@ class DoggoAdapter(private var dataSet: List<DoggoListResponse>, var listener: (
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView
+        val doggoImage: ImageView
 
         init {
             // Define click listener for the ViewHolder's View.
             textView = view.findViewById(R.id.doggo_name)
-            textView.setOnClickListener {
-
-            }
+            doggoImage = view.findViewById(R.id.doggo_image)
         }
     }
 
@@ -51,8 +53,11 @@ class DoggoAdapter(private var dataSet: List<DoggoListResponse>, var listener: (
         val doggo : DoggoListResponse = dataSet[position]
         viewHolder.textView.text = doggo.name
         viewHolder.itemView.setOnClickListener{
-            listener?.invoke(doggo)
-        }
+            listener?.invoke(doggo) }
+        Glide.with(viewHolder.itemView.context)
+            .load(doggo.image.url)
+            .centerCrop()
+            .into(viewHolder.doggoImage)
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.mydoggomobile.R
 
 /**
@@ -20,6 +22,7 @@ import com.example.mydoggomobile.R
 class DoggoDetailFragment : Fragment() {
 
     private lateinit var textView : TextView
+    private lateinit var image: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +40,7 @@ class DoggoDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var doggoName = arguments?.getString("DoggoArg")?: "Akita"
         var doggoTemp = arguments?.getString("DoggoTemp")?: "Nice"
+        var doggoImg = arguments?.getString("url")?: "https://images.dog.ceo/breeds/affenpinscher/n02110627_2748.jpg"
 
         view.findViewById<Button>(R.id.button_third).setOnClickListener {
             findNavController().navigate(R.id.returnToDoggoListFragment)
@@ -47,5 +51,11 @@ class DoggoDetailFragment : Fragment() {
 
         textView = view.findViewById(R.id.doggo_temperament)
         textView.text = doggoTemp
+
+        image = view.findViewById(R.id.doggo_detail_image)
+        Glide.with(this)
+            .load(doggoImg)
+            .centerCrop()
+            .into(image)
     }
 }
