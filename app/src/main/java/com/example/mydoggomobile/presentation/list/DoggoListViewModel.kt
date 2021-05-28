@@ -9,7 +9,7 @@ import retrofit2.Response
 
 class DoggoListViewModel : ViewModel(){
 
-    val doggoList: MutableLiveData<List<DoggoListResponse>> = MutableLiveData()
+    var doggoList: MutableLiveData<DoggoModel> = MutableLiveData()
 
     init {
         callApi()
@@ -18,14 +18,19 @@ class DoggoListViewModel : ViewModel(){
 
 
     private fun callApi() {
+        doggoList.value = DogLoader
         Singleton.doggoApi.getDoggoList().enqueue(object : Callback<List<DoggoListResponse>> {
             override fun onFailure(call: Call<List<DoggoListResponse>>, t: Throwable) {
+                doggoList.value = DogFailure
             }
 
             override fun onResponse(call: Call<List<DoggoListResponse>>, response: Response<List<DoggoListResponse>>) {
                 if(response.isSuccessful && response.body() != null){
                     val doggoResponse : List<DoggoListResponse> = response.body()!!
-                    doggoList.value = doggoResponse
+                    doggoList.value = DogSuccess(doggoResponse)
+                }
+                else{
+                    doggoList.value = DogFailure
                 }
             }
         })

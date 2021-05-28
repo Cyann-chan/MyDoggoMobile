@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -30,6 +33,9 @@ class DoggoListFragment : Fragment() {
 
     private val viewModel: DoggoListViewModel by viewModels()
 
+    private lateinit var loader : ProgressBar
+    private lateinit var texterror : TextView
+
 
 
     override fun onCreateView(
@@ -44,6 +50,8 @@ class DoggoListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView =  view.findViewById(R.id.dog_recyclerview)
+        loader = view.findViewById(R.id.loader)
+        texterror = view.findViewById(R.id.texterror)
 
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
@@ -51,8 +59,12 @@ class DoggoListFragment : Fragment() {
         }
 
 
-        viewModel.doggoList.observe(viewLifecycleOwner, Observer {list ->
-            adapter.updateList(list)
+        viewModel.doggoList.observe(viewLifecycleOwner, Observer {dogModel ->
+            loader.isVisible = dogModel is DogLoader
+            texterror.isVisible = dogModel is DogFailure
+
+            if (dogModel is DogSuccess)
+                adapter.updateList(dogModel.doggolist)
         })
 
 
