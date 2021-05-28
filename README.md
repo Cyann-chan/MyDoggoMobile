@@ -8,9 +8,10 @@ Le projet est basé sur une architecture MVVM.
 
 L’API utilisée pour ce projet : https://dog.ceo/dog-api/
 ## Logiciels utilisés
-- Android studio
+- Android Studio
 
-Si cela n'est pas déjà fait, installer Android Studio ici -> https://developer.android.com/studio
+(Si cela n'est pas déjà fait, installer Android Studio ici -> https://developer.android.com/studio)
+
 ## Captures d'écran
 
 <table>
@@ -24,10 +25,10 @@ Si cela n'est pas déjà fait, installer Android Studio ici -> https://developer
       <img width="192px" height="415px" src="./captures/home.jpg" />
     </td>
     <td>
-<img width="192px" height="415px" src="./screenshots/list.jpg" />
+<img width="192px" height="415px" src="./captures/list.jpg" />
     </td>
     <td>
-      <img width="192px" height="415px" src="./screenshots/description.jpg" />
+      <img width="192px" height="415px" src="./captures/description.jpg" />
     </td>
    <tr>
   <table>
