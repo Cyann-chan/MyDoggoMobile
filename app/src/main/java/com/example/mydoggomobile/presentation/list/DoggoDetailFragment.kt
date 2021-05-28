@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.example.mydoggomobile.R
 
@@ -17,6 +18,8 @@ import com.example.mydoggomobile.R
 
 
 class DoggoDetailFragment : Fragment() {
+
+    private lateinit var textView : TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,9 +35,13 @@ class DoggoDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        var doggoName = arguments?.getString("DoggoArg")?: "Akita"
         view.findViewById<Button>(R.id.button_third).setOnClickListener {
             findNavController().navigate(R.id.returnToDoggoListFragment)
         }
+
+        textView = view.findViewById(R.id.doggo_detail)
+
+        textView.text = doggoName
     }
 }

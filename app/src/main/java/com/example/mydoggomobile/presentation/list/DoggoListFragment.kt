@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -75,13 +76,11 @@ class DoggoListFragment : Fragment() {
       //     add(Doggo("Berger Allemand"))
       // }
 
-}    private fun onClickedDoggo(doggo: DoggoListResponse) {
-        val doggoName = doggo.name
-        val bundle = Bundle()
-        bundle.putString("doggoname",doggoName)
+    }
 
-        val fragment = Fragment()
-        fragment.setArguments(bundle)
-        findNavController().navigate(R.id.navigateToDoggoDetailFragment)
+    private fun onClickedDoggo(doggo: DoggoListResponse) {
+        findNavController().navigate(R.id.navigateToDoggoDetailFragment, bundleOf(
+                "DoggoArg" to doggo.name
+        ))
     }
 }

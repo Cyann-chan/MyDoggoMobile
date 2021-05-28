@@ -24,7 +24,12 @@
 
         <action
             android:id="@+id/navigateToDoggoDetailFragment"
-            app:destination="@id/DoggoDetailFragment" />
+            app:destination="@id/DoggoDetailFragment" >
+            <argument
+                android:name="DoggoArg"
+                app:argType="string"
+                android:defaultValue="null"/>
+        </action>
     </fragment>
 
     <fragment
