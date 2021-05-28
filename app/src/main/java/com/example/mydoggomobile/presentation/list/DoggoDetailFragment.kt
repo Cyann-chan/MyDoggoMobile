@@ -12,6 +12,10 @@ import com.example.mydoggomobile.R
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+
+
+
+
 class DoggoDetailFragment : Fragment() {
 
     override fun onCreateView(
@@ -21,6 +25,10 @@ class DoggoDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detail_doggo, container, false)
     }
+
+
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

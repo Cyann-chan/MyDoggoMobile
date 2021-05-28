@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +25,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 class DoggoListFragment : Fragment() {
 
     private lateinit var recyclerView : RecyclerView
+
     private val adapter = DoggoAdapter(listOf(), ::onClickedDoggo)
+
+    private val viewModel: DoggoListViewModel by viewModels()
 
 
 
@@ -46,27 +51,9 @@ class DoggoListFragment : Fragment() {
         }
 
 
-        val retrofit: Retrofit= Retrofit.Builder()
-            .baseUrl("https://api.thedogapi.com/v1/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-
-        val doggoApi : DoggoApi = retrofit.create(DoggoApi::class.java)
-
-        doggoApi.getDoggoList().enqueue(object : Callback<List<DoggoListResponse>>{
-            override fun onFailure(call: Call<List<DoggoListResponse>>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onResponse(call: Call<List<DoggoListResponse>>, response: Response<List<DoggoListResponse>>) {
-                if (response.isSuccessful && response.body() != null)
-                {
-                    val doggoResponse : List<DoggoListResponse> = response.body()!!
-                    adapter.updateList(doggoResponse)
-                }
-
-        }
+        viewModel.doggoList.observe(viewLifecycleOwner, Observer {list ->
+            adapter.updateList(list)
+        })
 
 
       // val doggoList = arrayListOf<Doggo>().apply {
@@ -75,9 +62,6 @@ class DoggoListFragment : Fragment() {
       //     add(Doggo("Chihuahua"))
       //     add(Doggo("Berger Allemand"))
       // }
-
-
-    })
 
 }    private fun onClickedDoggo(doggo: DoggoListResponse) {
         val doggoName = doggo.name
